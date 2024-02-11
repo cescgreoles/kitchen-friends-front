@@ -1,0 +1,50 @@
+/* HomePage.scss */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  background-image: url("../assets/cuina.png");
+  background-size: cover; /* La imagen se ajustará para cubrir completamente el elemento */
+  background-position: center;
+}
+
+.content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo {
+  width: 300px; /* Tamaño del logo */
+  height: auto;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: black; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: black; /* Cambio de color al pasar el ratón */
+}
