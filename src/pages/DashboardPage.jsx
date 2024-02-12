@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/DashboardPage.scss";
+import NavbarComponent from "../components/NavbarComponent";
 
 const Dashboard = () => {
   const [meals, setMeals] = useState([]);
@@ -78,7 +79,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h2>Mis Comidas</h2>
+      <NavbarComponent />
       <div className="meals">
         {meals.map((meal) => (
           <div className="meal" key={meal._id}>

@@ -1,0 +1,57 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: "Permanent Marker", cursive;
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    cursor: pointer;
+    color: black;
+  }
+
+  &__logout {
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s; // Transición suave del color del texto
+  }
+
+  &__logout:hover {
+    color: black; // Color del texto en el estado de hover
+  }
+
+  &__link {
+    font-style: normal;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+    margin-left: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    &__link {
+      margin: 10px 0;
+    }
+  }
+}
