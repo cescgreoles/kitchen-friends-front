@@ -15,7 +15,7 @@ const HomePage = () => {
             Registrar-se
           </Link>
           <Link to="/login" className="button">
-            Inicia Sessió
+            Iniciar Sessió
           </Link>
         </div>
       </div>

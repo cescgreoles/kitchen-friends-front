@@ -21,7 +21,7 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://tu-backend.com/registro",
+        "http://localhost:3000/users/create",
         formData
       );
       console.log(response.data);
