@@ -1,0 +1,55 @@
+.MealsDetailWrapper {
+  display: flex;
+  flex-wrap: wrap; /* Permitir que las cartas se envuelvan en pantallas pequeñas */
+  justify-content: space-between;
+}
+
+.MealCard,
+.IngredientsCard {
+  width: calc(40% - 10px); /* El 10px es para el espacio entre las cartas */
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 42px; /* Espacio entre las cartas */
+}
+
+.MealTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.MealImage {
+  width: 100%;
+  border-radius: 7px;
+  margin-bottom: 7px;
+}
+
+.MealType {
+  font-size: 16px;
+  font-style: italic;
+  color: #555;
+}
+
+.IngredientList {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.IngredientItem {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .MealCard,
+  .IngredientsCard {
+    width: calc(
+      100% - 20px
+    ); /* Ancho total menos el espacio entre las cartas */
+  }
+}

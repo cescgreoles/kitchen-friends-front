@@ -1,142 +1,50 @@
-.dashboard {
-  text-align: center;
-  padding: 20px;
+/* DashboardPage.scss */
 
-  h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border-radius: 5px;
-  }
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px; /* Ajusta el espacio según sea necesario */
 
   .meals {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 3fr));
     gap: 20px;
-    margin-top: 20px;
-    font-family: "Lexend", sans-serif;
-  }
-
-  .meal {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: #fff;
-
-    img {
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 5px;
-    }
-
-    h3 {
-      margin-bottom: 5px;
-      font-size: 16px;
-    }
-
-    p {
-      margin-bottom: 5px;
-      font-size: 14px;
-    }
-
-    ul {
-      margin-top: 5px;
-      padding-left: 10px;
-    }
-
-    li {
-      list-style: none;
-      margin-bottom: 3px;
-      font-size: 12px;
-    }
-
-    button {
-      margin-top: 5px;
-      padding: 5px 10px;
-      font-size: 12px;
-      background-color: black;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: black;
-    }
-  }
-
-  .edit-form {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 7px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: black;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: black;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-    .meals {
-      grid-template-columns: repeat(3, 1fr); /* Cambio a 4 columnas */
-    }
+    justify-content: center;
+    margin: 4em;
 
     .meal {
+      background-color: white;
+      border-radius: 10px;
       padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      opacity: 0.9;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
       img {
-        margin-bottom: 10px;
+        width: 100%;
+        border-radius: 7px;
+        margin-bottom: 7px;
       }
 
       h3 {
-        font-size: 18px;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
       }
 
       p {
-        font-size: 16px;
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 10px;
       }
 
-      li {
-        font-size: 14px;
-      }
-
-      button {
-        margin-top: 10px;
-        font-size: 14px;
-        padding: 8px 16px;
+      .meal-link {
+        text-decoration: none;
+        color: inherit;
       }
     }
   }
