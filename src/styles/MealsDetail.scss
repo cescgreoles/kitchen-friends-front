@@ -8,10 +8,11 @@
 .IngredientsCard {
   width: calc(40% - 10px); /* El 10px es para el espacio entre las cartas */
   background-color: #f8f9fa;
-  border-radius: 10px;
+  border-radius: 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin: 42px; /* Espacio entre las cartas */
+  opacity: 0.9;
 }
 
 .MealTitle {
@@ -22,9 +23,19 @@
 }
 
 .MealImage {
-  width: 100%;
+  width: 100%; /* La imagen ocupará el 100% del ancho de su contenedor */
+  max-width: 250px; /* Establece un ancho máximo para la imagen */
+  height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
   border-radius: 7px;
   margin-bottom: 7px;
+  display: block; /* Asegura que la imagen se comporte como un bloque */
+  margin: 0 auto; /* Centra la imagen horizontalmente */
+}
+
+.MealPack {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .MealType {
@@ -42,6 +53,24 @@
 .IngredientItem {
   font-size: 14px;
   color: #777;
+}
+
+.button-edit {
+  margin-top: 180px;
+}
+
+.button-delete {
+  margin-top: 3px;
+}
+
+.MealTitle,
+.MealImage,
+.MealPack,
+.MealType,
+.IngredientList,
+.IngredientItem {
+  text-align: center; /* Centra el texto horizontalmente */
+  margin-bottom: 10px; /* Espacio entre los elementos */
 }
 
 /* Estilos para pantallas más pequeñas */

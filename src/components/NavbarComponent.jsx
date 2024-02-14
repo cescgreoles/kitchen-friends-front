@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaSignOutAlt } from "react-icons/fa";
+
 import axios from "axios";
 import "../styles/NavbarComponent.scss";
 
@@ -33,7 +35,7 @@ const NavbarComponent = () => {
       <div className="navbar__right">
         {isLoggedIn ? (
           <button className="navbar__logout" onClick={handleLogout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="navbar__icon" />
+            <FaSignOutAlt />
           </button>
         ) : (
           <Link to="/login" className="navbar__link">

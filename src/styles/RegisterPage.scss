@@ -17,7 +17,7 @@
 
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 37px;
   font-family: "Permanent Marker", cursive;
 }
@@ -48,6 +48,13 @@ button {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.textLink {
+  text-decoration: none;
+  font-size: 12px;
+  align-items: center;
+  color: black;
 }
 
 button:hover {

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/DashboardPage.scss";
 import NavbarComponent from "../components/NavbarComponent";
+import CreateRecipe from "../components/CreateRecipe";
 
 const Dashboard = () => {
   const [meals, setMeals] = useState([]);
@@ -23,13 +24,14 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <NavbarComponent />
+      <CreateRecipe />
       <div className="meals">
         {meals.map((meal) => (
           <div className="meal" key={meal._id}>
             <Link to={`/meals/detail/${meal._id}`} className="meal-link">
               <img src={meal.img} alt={meal.name} />
               <h3>{meal.name}</h3>
-              <p>Tipo: {meal.type.map((type) => type.name).join(", ")}</p>
+              <p>{meal.type}</p>
             </Link>
           </div>
         ))}

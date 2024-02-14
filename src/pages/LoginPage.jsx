@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/LoginPage.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -59,6 +59,9 @@ const LoginPage = () => {
           </div>
           <button type="submit">Iniciar sesión</button>
         </form>
+        <Link to="/register" className="textLink">
+          <p className="textLink">No estàs registrat?</p>
+        </Link>
       </div>
     </div>
   );

@@ -1,39 +1,41 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../styles/CreateRecipePage.scss";
 
-const CreateRecipeForm = () => {
+const CreateRecipePage = () => {
   const [formData, setFormData] = useState({
     name: "",
-    description: "",
-    duration: 0,
-    ingredients: "",
     type: "",
-    img: null,
+    description: "",
+    img: "",
+    duration: "",
+    ingredients: "",
+    cook: "",
   });
 
-  const handleInputChange = (e) => {
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageChange = (e) => {
-    setFormData({ ...formData, img: e.target.files[0] });
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, img: file });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataWithImage = new FormData();
-    formDataWithImage.append("name", formData.name);
-    formDataWithImage.append("description", formData.description);
-    formDataWithImage.append("duration", formData.duration);
-    formDataWithImage.append("ingredients", formData.ingredients);
-    formDataWithImage.append("type", formData.type);
-    formDataWithImage.append("img", formData.img);
-
     try {
+      const formDataToSend = new FormData();
+      for (let key in formData) {
+        formDataToSend.append(key, formData[key]);
+      }
       const response = await axios.post(
         "http://localhost:3000/meals/create",
-        formDataWithImage,
+        formDataToSend,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -41,84 +43,85 @@ const CreateRecipeForm = () => {
         }
       );
       console.log("Receta creada:", response.data);
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Error al crear la receta:", error);
+      console.error("Error al crear receta:", error);
     }
   };
 
   return (
-    <div>
-      <h2>Crea una nueva receta</h2>
+    <div className="create-recipe-page">
+      <div className="titleCreate">
+        <h2>Nova Recepta</h2>
+      </div>
+
       <form onSubmit={handleSubmit}>
-        {/* Nombre */}
-        <label htmlFor="name">Nombre:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          required
-        />
-
-        {/* Descripción */}
-        <label htmlFor="description">Descripción:</label>
-        <textarea
-          id="description"
-          name="description"
-          value={formData.description}
-          onChange={handleInputChange}
-          required
-        />
-
-        {/* Duración */}
-        <label htmlFor="duration">Duración (minutos):</label>
-        <input
-          type="number"
-          id="duration"
-          name="duration"
-          value={formData.duration}
-          onChange={handleInputChange}
-          required
-        />
-
-        {/* Ingredientes */}
-        <label htmlFor="ingredients">Ingredientes:</label>
-        <input
-          type="text"
-          id="ingredients"
-          name="ingredients"
-          value={formData.ingredients}
-          onChange={handleInputChange}
-          required
-        />
-
-        {/* Tipo */}
-        <label htmlFor="type">Tipo:</label>
-        <input
-          type="text"
-          id="type"
-          name="type"
-          value={formData.type}
-          onChange={handleInputChange}
-          required
-        />
-
-        {/* Imagen */}
-        <label htmlFor="img">Imagen:</label>
-        <input
-          type="file"
-          id="img"
-          name="img"
-          accept="image/*"
-          onChange={handleImageChange}
-          required
-        />
-
-        <button type="submit">Crear receta</button>
+        <label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Nom de la recepta"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            name="type"
+            placeholder="Tipus de menjar: vegetaria, carn, pasta, etc.."
+            value={formData.type}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <textarea
+            name="description"
+            placeholder="Com ho has fet?"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <input type="file" name="img" onChange={handleFileChange} required />
+        </label>
+        <label>
+          <input
+            type="number"
+            name="duration"
+            placeholder="Preparació en minuts"
+            value={formData.duration}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            name="ingredients"
+            placeholder="Ingredients"
+            value={formData.ingredients}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label>
+          <input
+            type="text"
+            name="cook"
+            placeholder="Cuiner"
+            value={formData.cook}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <button type="submit">Guardar Nova Recepta</button>
       </form>
     </div>
   );
 };
 
-export default CreateRecipeForm;
+export default CreateRecipePage;

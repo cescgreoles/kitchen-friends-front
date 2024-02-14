@@ -1,14 +1,14 @@
-/* DashboardPage.scss */
-
 .dashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px; /* Ajusta el espacio según sea necesario */
 
   .meals {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 3fr));
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* Tres columnas con tamaño flexible */
     gap: 20px;
     justify-content: center;
     margin: 4em;
@@ -26,7 +26,10 @@
       }
 
       img {
-        width: 100%;
+        width: 100%; /* Ajusta el ancho de la imagen al 100% del contenedor */
+        height: auto; /* Altura automática para mantener la proporción */
+        max-height: 150px; /* Altura máxima para limitar el tamaño */
+        object-fit: cover; /* Ajusta el tamaño de la imagen para cubrir el contenedor */
         border-radius: 7px;
         margin-bottom: 7px;
       }
@@ -46,6 +49,21 @@
         text-decoration: none;
         color: inherit;
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .meals {
+      grid-template-columns: repeat(
+        2,
+        1fr
+      ); /* Dos columnas en pantallas más pequeñas */
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .meals {
+      grid-template-columns: 1fr; /* Una columna en pantallas extra pequeñas */
     }
   }
 }

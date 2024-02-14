@@ -2,8 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
-  padding: 10px 20px;
+  background-color: black;
+  padding: 10px;
+  width: 100%;
+  opacity: 0.8;
+  color: white;
 
   @media screen and (max-width: 768px) {
     flex-direction: row;
@@ -25,20 +28,16 @@
   &__icon {
     font-size: 1.5rem;
     margin-right: 10px;
-    cursor: pointer;
+
     color: black;
   }
 
   &__logout {
-    font-weight: 400;
     font-size: 1rem;
+    color: white;
     background-color: transparent;
     border: none;
     transition: color 0.3s; // Transición suave del color del texto
-  }
-
-  &__logout:hover {
-    color: black; // Color del texto en el estado de hover
   }
 
   &__link {
