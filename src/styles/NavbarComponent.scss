@@ -1,12 +1,14 @@
 .navbar {
+  position: fixed; /* Fija el navbar en la parte superior */
+  top: 0; /* Asegura que el navbar esté siempre en la parte superior */
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: black;
   padding: 10px;
-  width: 100%;
-  opacity: 0.8;
+  width: 100%; /* Ocupa el ancho completo de la página */
   color: white;
+  z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
 
   @media screen and (max-width: 768px) {
     flex-direction: row;
@@ -38,6 +40,7 @@
     background-color: transparent;
     border: none;
     transition: color 0.3s; // Transición suave del color del texto
+    margin-right: 12px;
   }
 
   &__link {

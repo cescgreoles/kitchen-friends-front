@@ -8,7 +8,7 @@ const RegisterPage = () => {
     name: "",
     email: "",
     password: "",
-    accessCode: "",
+    code: "", // Cambiado de accessCode a code
   });
 
   const navigate = useNavigate();
@@ -74,8 +74,8 @@ const RegisterPage = () => {
             <input
               type="text"
               id="access-code"
-              name="accessCode"
-              value={formData.accessCode}
+              name="code" // Cambiado de accessCode a code
+              value={formData.code}
               onChange={handleChange}
               required
             />
