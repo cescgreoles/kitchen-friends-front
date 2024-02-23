@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage";
 import DashboardPage from "./pages/DashboardPage";
 import CreateRecipePage from "./pages/CreateRecipePage";
 import MealsDetail from "./pages/MealsDetail";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/create" element={<CreateRecipePage />} />
       <Route path="/meals/detail/:id" element={<MealsDetail />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Routes>
   );
 };

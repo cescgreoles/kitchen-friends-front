@@ -69,17 +69,7 @@ const RegisterPage = () => {
               required
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="access-code">Codi d'accès</label>
-            <input
-              type="text"
-              id="access-code"
-              name="code" // Cambiado de accessCode a code
-              value={formData.code}
-              onChange={handleChange}
-              required
-            />
-          </div>
+
           <button type="submit">Registrar-se</button>
         </form>
         <Link to="/login" className="textLink">

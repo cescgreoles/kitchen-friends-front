@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faUser } from "@fortawesome/free-solid-svg-icons"; // Importa el icono de usuario
 import { FaSignOutAlt } from "react-icons/fa";
 import axios from "axios";
 import "../styles/NavbarComponent.scss";
@@ -13,6 +13,7 @@ const NavbarComponent = ({
   title = "Les Receptes",
   createRecipePath = "/create",
   loginPath = "/login",
+  profilePath = "/profile", // Agrega la ruta de la página de perfil
 }) => {
   const navigate = useNavigate();
 
@@ -35,10 +36,16 @@ const NavbarComponent = ({
         <Link to={createRecipePath} className="navbar__link">
           <FontAwesomeIcon icon={faPlus} className="navbar__icon" />
         </Link>
+        {isLoggedIn && ( // Muestra el icono de perfil solo si el usuario está autenticado
+          <Link to={profilePath} className="navbar__link">
+            <FontAwesomeIcon icon={faUser} className="navbar__icon" />
+          </Link>
+        )}
       </div>
       <div className="navbar__center">
         <h1 className="navbar__title">{title}</h1>
       </div>
+
       <div className="navbar__right">
         {isLoggedIn ? (
           <button className="navbar__logout" onClick={handleLogout}>

@@ -3,7 +3,8 @@
   opacity: 0.8;
   color: white;
   width: 100%;
-  margin-bottom: 1em;
+  height: auto;
+  align-items: center;
 }
 
 .create-recipe-page {
@@ -20,23 +21,23 @@
     padding: 20px;
     width: 100%;
     max-width: 500px; /* Máximo ancho para el formulario */
+    margin-top: 10px;
   }
 
   label {
     display: block;
-    margin-bottom: 10px;
   }
 
   input,
   textarea,
   button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 6px;
+    margin-bottom: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 13px;
   }
 
   button {
@@ -54,7 +55,7 @@
 
   @media screen and (max-width: 600px) {
     form {
-      width: 90%;
+      width: 100%;
     }
   }
 }

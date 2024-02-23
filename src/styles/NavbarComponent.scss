@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: black;
+
   padding: 10px;
   width: 100%; /* Ocupa el ancho completo de la página */
   color: white;
@@ -31,7 +32,7 @@
     font-size: 1.5rem;
     margin-right: 10px;
 
-    color: black;
+    color: white;
   }
 
   &__logout {
