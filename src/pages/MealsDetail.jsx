@@ -6,6 +6,7 @@ import "../styles/MealsDetail.scss";
 
 const MealsDetail = () => {
   const [meal, setMeal] = useState(null);
+  const [allIngrediets, setAllIngrediets] = useState([]);
   const [editedMeal, setEditedMeal] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [imageFile, setImageFile] = useState(null);
@@ -15,9 +16,14 @@ const MealsDetail = () => {
   useEffect(() => {
     const fetchMeal = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/meals/${id}`);
-        setMeal(response.data);
-        setEditedMeal(response.data);
+        const [mealsResponse, ingredientsResponse] = await Promise.all([
+          axios.get(`http://localhost:3000/meals/${id}`),
+          axios.get(`http://localhost:3000/ingredients`),
+        ]);
+
+        setMeal(mealsResponse.data);
+        setEditedMeal(mealsResponse.data);
+        setAllIngrediets(ingredientsResponse.data);
       } catch (error) {
         console.error("Error fetching meal details:", error);
       }
@@ -32,22 +38,25 @@ const MealsDetail = () => {
 
   const handleSave = async () => {
     try {
-      const formData = new FormData();
-      formData.append("name", editedMeal.name);
-      formData.append("type", editedMeal.type);
-      formData.append("duration", editedMeal.duration);
-      formData.append("cook", editedMeal.cook);
-      formData.append("description", editedMeal.description);
-      formData.append("ingredients", editedMeal.ingredients);
-      if (imageFile) {
-        formData.append("img", imageFile);
-      }
-
-      await axios.put(`http://localhost:3000/meals/edit/${id}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      await axios.put(
+        `http://localhost:3000/meals/edit/${id}`,
+        {
+          name: editedMeal.name,
+          type: editedMeal.type,
+          duration: editedMeal.duration,
+          cook: editedMeal.cook,
+          description: editedMeal.description,
+          ingredients: editedMeal.ingredients.map(
+            (ingredient) => ingredient._id
+          ),
+          img: imageFile,
         },
-      });
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       setIsEditing(false);
       setMeal(editedMeal); // Actualiza la receta mostrada después de editar
@@ -78,6 +87,17 @@ const MealsDetail = () => {
     } catch (error) {
       console.error("Error deleting meal:", error);
     }
+  };
+
+  const handleDeleteIngredientFromMeal = async (ingredientId) => {
+    const updatedMeal = {
+      ...editedMeal,
+      ingredients: editedMeal.ingredients.filter(
+        (ingredient) => ingredient._id !== ingredientId
+      ),
+    };
+
+    setEditedMeal(updatedMeal);
   };
 
   if (!meal) {
@@ -143,19 +163,65 @@ const MealsDetail = () => {
                 onChange={handleChange}
                 placeholder="Descripción de la receta"
               ></textarea>
-              <textarea
-                name="ingredients"
-                value={editedMeal.ingredients}
-                onChange={handleChange}
-                placeholder="Ingredientes"
-              ></textarea>
+
+              {editedMeal.ingredients.map((ingredient, index) => (
+                <div className="delete-edit" key={ingredient._id}>
+                  <p>{ingredient.name}</p>
+                  <button
+                    onClick={() =>
+                      handleDeleteIngredientFromMeal(ingredient._id)
+                    }
+                    className="delete-paper"
+                  >
+                    <MdDelete />
+                  </button>
+                </div>
+              ))}
+
+              <select
+                defaultValue={"none"}
+                onChange={(e) => {
+                  const selectedIngredient = allIngrediets.find(
+                    (ingredient) => ingredient._id === e.target.value
+                  );
+                  setEditedMeal({
+                    ...editedMeal,
+                    ingredients: [
+                      ...editedMeal.ingredients,
+                      selectedIngredient,
+                    ],
+                  });
+                }}
+              >
+                <option disabled value="none">
+                  Afegir ingredient
+                </option>
+                {allIngrediets
+                  .filter(
+                    (ingredient) =>
+                      !editedMeal.ingredients.some(
+                        (selectedIngredient) =>
+                          selectedIngredient._id === ingredient._id
+                      )
+                  )
+                  .map((ingredient) => (
+                    <option key={ingredient._id} value={ingredient._id}>
+                      {ingredient.name}
+                    </option>
+                  ))}
+              </select>
+
+              {/* Create a new ingredient */}
             </>
           ) : (
             <>
               <h1 className="MealTitle">Preparació i ingredients</h1>
               <ul className="IngredientList">{meal.description}</ul>
               <ul className="IngredientList">
-                Ingredients: {meal.ingredients}
+                Ingredients:{" "}
+                {meal.ingredients.map((ingredient) => (
+                  <li key={ingredient._id}>{ingredient.name}</li>
+                ))}
               </ul>
             </>
           )}

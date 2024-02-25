@@ -56,31 +56,37 @@
   color: #777;
 }
 
-.button-edit {
-  margin-top: 180px;
-  text-decoration: none;
-  color: white;
+.EditButton,
+.DeleteButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.EditButton {
-  margin-bottom: 1px;
+.delete-edit {
+  display: flex;
 }
 
-.button-delete {
-  margin-top: 3px;
+.delete-paper {
+  background-color: white;
+  color: black;
+  width: 20%;
 }
 
-.MealTitle,
-.MealImage,
-.MealPack,
-.MealType,
-.IngredientList,
-.IngredientItem {
-  text-align: center; /* Centra el texto horizontalmente */
-  margin-bottom: 10px; /* Espacio entre los elementos */
+.EditButton:hover,
+.DeleteButton:hover {
+  background-color: #0056b3;
 }
 
-/* Estilos para pantallas más pequeñas */
+.ButtonsWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media (max-width: 768px) {
   .MealCard,
   .IngredientsCard {
